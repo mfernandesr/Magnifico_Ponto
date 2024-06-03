@@ -1,9 +1,12 @@
-﻿using MagnificoPonto.Context;
+﻿using MagnificoPonto.Areas.Admin.Services;
+using MagnificoPonto.Context;
 using MagnificoPonto.Models;
 using MagnificoPonto.Repositories;
 using MagnificoPonto.Repositories.Interfaces;
+using MagnificoPonto.Services;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using ReflectionIT.Mvc.Paging;
 
 namespace MagnificoPonto;
 
@@ -26,6 +29,9 @@ namespace MagnificoPonto;
                 .AddEntityFrameworkStores<AppDbContext>()
                 .AddDefaultTokenProviders();
 
+            services.ConfigureApplicationCookie(options => options.AccessDeniedPath = "/Home/AccessDenied");
+            services.Configure<ConfigurationImagens>(Configuration.GetSection("ConfigurationPastaImagens"));
+
             services.Configure<IdentityOptions>(options =>
             {
                 //Default password settings
@@ -42,18 +48,38 @@ namespace MagnificoPonto;
             services.AddTransient<ICategoriaRepository, CategoriaRepository>();
             services.AddTransient<IPedidoRepository, PedidoRepository>();
 
+            services.AddScoped<ISeedUserRoleInitial, SeedUserRoleInitial>();
+            services.AddScoped<RelatorioVendasService>();
+
+            services.AddAuthorization(options =>
+            {
+                options.AddPolicy("Admin",
+                    politica =>
+                    {
+                        politica.RequireRole("Admin");
+                    });
+            });
+
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 
             services.AddScoped(sp => CarrinhoCompra.GetCarrinho(sp));
 
             services.AddControllersWithViews();
 
+            services.AddPaging(options =>
+            {
+                options.ViewName = "Bootstrap4";
+                options.PageParameterName = "pageIndex";
+            });
+
             services.AddMemoryCache();
             services.AddSession();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public void Configure(IApplicationBuilder app,
+                              IWebHostEnvironment env,
+                              ISeedUserRoleInitial seedUserRoleInitial)
         {
             if (env.IsDevelopment())
             {
@@ -72,10 +98,21 @@ namespace MagnificoPonto;
 
             app.UseRouting();
 
+            //cria os perfis
+            seedUserRoleInitial.SeedRoles();
+            //cria os usuários e atribui ao perfil
+            seedUserRoleInitial.SeedUsers();
+
+            app.UseAuthentication();
+
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
             {
+                endpoints.MapControllerRoute(
+                    name: "areas",
+                    pattern: "{area:exists}/{controller=Admin}/{action=Index}/{id?}");
+
                 endpoints.MapControllerRoute(
                     name: "categoriaFiltro",
                     pattern: "Amigurumi/{action}/{categoria?}",
