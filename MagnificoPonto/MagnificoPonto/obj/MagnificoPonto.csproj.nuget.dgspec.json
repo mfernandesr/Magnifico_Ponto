@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\mfern\\Desktop\\PUC\\Matérias\\Eixo 5\\Magnifico Ponto\\pmv-ads-2024-1-e5-proj-empext-t2-magnifico-ponto\\MagnificoPonto\\MagnificoPonto\\MagnificoPonto.csproj": {}
+    "C:\\Users\\mfern\\Desktop\\PUC\\Matérias\\Eixo 5\\Magnifico Ponto\\pmv-ads-2024-1-e5-proj-empext-t2-magnifico-ponto\\codigo-fonte\\MagnificoPonto\\MagnificoPonto\\MagnificoPonto.csproj": {}
   },
   "projects": {
-    "C:\\Users\\mfern\\Desktop\\PUC\\Matérias\\Eixo 5\\Magnifico Ponto\\pmv-ads-2024-1-e5-proj-empext-t2-magnifico-ponto\\MagnificoPonto\\MagnificoPonto\\MagnificoPonto.csproj": {
+    "C:\\Users\\mfern\\Desktop\\PUC\\Matérias\\Eixo 5\\Magnifico Ponto\\pmv-ads-2024-1-e5-proj-empext-t2-magnifico-ponto\\codigo-fonte\\MagnificoPonto\\MagnificoPonto\\MagnificoPonto.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\mfern\\Desktop\\PUC\\Matérias\\Eixo 5\\Magnifico Ponto\\pmv-ads-2024-1-e5-proj-empext-t2-magnifico-ponto\\MagnificoPonto\\MagnificoPonto\\MagnificoPonto.csproj",
+        "projectUniqueName": "C:\\Users\\mfern\\Desktop\\PUC\\Matérias\\Eixo 5\\Magnifico Ponto\\pmv-ads-2024-1-e5-proj-empext-t2-magnifico-ponto\\codigo-fonte\\MagnificoPonto\\MagnificoPonto\\MagnificoPonto.csproj",
         "projectName": "MagnificoPonto",
-        "projectPath": "C:\\Users\\mfern\\Desktop\\PUC\\Matérias\\Eixo 5\\Magnifico Ponto\\pmv-ads-2024-1-e5-proj-empext-t2-magnifico-ponto\\MagnificoPonto\\MagnificoPonto\\MagnificoPonto.csproj",
+        "projectPath": "C:\\Users\\mfern\\Desktop\\PUC\\Matérias\\Eixo 5\\Magnifico Ponto\\pmv-ads-2024-1-e5-proj-empext-t2-magnifico-ponto\\codigo-fonte\\MagnificoPonto\\MagnificoPonto\\MagnificoPonto.csproj",
         "packagesPath": "C:\\Users\\mfern\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\mfern\\Desktop\\PUC\\Matérias\\Eixo 5\\Magnifico Ponto\\pmv-ads-2024-1-e5-proj-empext-t2-magnifico-ponto\\MagnificoPonto\\MagnificoPonto\\obj\\",
+        "outputPath": "C:\\Users\\mfern\\Desktop\\PUC\\Matérias\\Eixo 5\\Magnifico Ponto\\pmv-ads-2024-1-e5-proj-empext-t2-magnifico-ponto\\codigo-fonte\\MagnificoPonto\\MagnificoPonto\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\mfern\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -40,17 +40,23 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "dependencies": {
-            "Microsoft.AspNetCore.Identity.EntityFrameworkCore": {
-              "target": "Package",
-              "version": "[6.0.1, )"
-            },
-            "Microsoft.EntityFrameworkCore.Design": {
-              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
-              "suppressParent": "All",
+            "Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore": {
               "target": "Package",
               "version": "[6.0.28, )"
             },
+            "Microsoft.AspNetCore.Identity.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[6.0.29, )"
+            },
+            "Microsoft.AspNetCore.Identity.UI": {
+              "target": "Package",
+              "version": "[6.0.29, )"
+            },
             "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[6.0.29, )"
+            },
+            "Microsoft.EntityFrameworkCore.Sqlite": {
               "target": "Package",
               "version": "[6.0.29, )"
             },
@@ -58,15 +64,11 @@
               "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
               "suppressParent": "All",
               "target": "Package",
-              "version": "[6.0.28, )"
+              "version": "[6.0.29, )"
             },
             "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
               "target": "Package",
               "version": "[6.0.16, )"
-            },
-            "ReflectionIT.Mvc.Paging": {
-              "target": "Package",
-              "version": "[6.0.1, )"
             }
           },
           "imports": [

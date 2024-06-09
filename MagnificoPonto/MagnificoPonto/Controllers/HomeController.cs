@@ -1,6 +1,4 @@
 ﻿using MagnificoPonto.Models;
-using MagnificoPonto.Repositories.Interfaces;
-using MagnificoPonto.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 
@@ -8,27 +6,43 @@ namespace MagnificoPonto.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly IAmigurumiRepository _amigurumiRepository;
+        private readonly ILogger<HomeController> _logger;
 
-        public HomeController(IAmigurumiRepository amigurumiRepository)
+        public HomeController(ILogger<HomeController> logger)
         {
-            _amigurumiRepository = amigurumiRepository;
+            _logger = logger;
         }
 
         public IActionResult Index()
         {
-            var homeViewModel = new HomeViewModel
-            {
-                AmigurumisLancamento = _amigurumiRepository.AmigurumiLancamento
-            };
-
-            return View(homeViewModel);
+            return View();
         }
 
-        public IActionResult TermosdeUso()
+        public IActionResult Sobre()
         {
             return View();
         }
+
+        public IActionResult Produtos()
+        {
+            return View();
+        }
+
+        public IActionResult Contato()
+        {
+            return View();
+        }
+
+        public IActionResult FAQs()
+        {
+            return View();
+        }
+
+        public IActionResult Termos()
+        {
+            return View();
+        }
+
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()

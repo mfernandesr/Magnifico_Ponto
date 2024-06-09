@@ -1,0 +1,119 @@
+﻿@page
+@model LoginModel
+
+@{
+    ViewData["Title"] = "Log in";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+
+
+<!doctype html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Tooplate's Little Fashion - Product Detail</title>
+
+    <!-- CSS FILES -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;300;400;700;900&display=swap" rel="stylesheet">
+
+    <link href="~/front/css/bootstrap.min.css" rel="stylesheet">
+    <link href="~/front/css/bootstrap-icons.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="~/front/css/slick.css" />
+
+    <link href="~/front/css/magnifico-ponto.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+    <section class="preloader">
+        <div class="spinner">
+            <span class="sk-inner-circle"></span>
+        </div>
+    </section>
+
+    <main>
+
+        <div class="row justify-content-center">
+            <div class="col-md-4">
+                <section>
+                    <form id="account" method="post">
+                        <h2>Acesse sua conta!</h2>
+                        <br />
+                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                        <div class="form-floating mb-3">
+                            <input asp-for="Input.Email" class="form-control" autocomplete="username"
+                                   aria-required="true" />
+                            <label asp-for="Input.Email" class="form-label">Email</label>
+                            <span asp-validation-for="Input.Email" class="text-danger"></span>
+                        </div>
+                        <div class="form-floating mb-3">
+                            <input asp-for="Input.Password" class="form-control" autocomplete="current-password"
+                                   aria-required="true" />
+                            <label asp-for="Input.Password" class="form-label">Senha</label>
+                            <span asp-validation-for="Input.Password" class="text-danger"></span>
+                        </div>
+                        <div>
+                            <div class="checkbox">
+                                <label asp-for="Input.RememberMe" class="form-label">
+                                    <input class="form-check-input"
+                                           asp-for="Input.RememberMe" /><!--@Html.DisplayNameFor(m => m.Input.RememberMe)-->
+                                    Lembrar-me
+                                </label>
+                            </div>
+                        </div>
+                        <div>
+                            <button id="login-submit" type="submit" class="w-100 btn btn-lg btn-dark">Entrar</button>
+                        </div>
+                        <div>
+                            <p class="text-center">
+                                <br>
+                                <a asp-page="./Register" asp-route-returnUrl="@Model.ReturnUrl">
+                                    Registre-se como um novo usuário
+                                </a>
+                                @* <a id="forgot-password" asp-page="./ForgotPassword">Esqueceu sua senha?</a>*@
+                                <br>
+                                <br>
+                                @*<a id="resend-confirmation" asp-page="./ResendEmailConfirmation">
+                                    Reenviar e-mail de confirmação
+                                </a>*@
+                            </p>
+                        </div>
+                    </form>
+                </section>
+            </div>
+        </div>
+
+    </main>
+
+
+
+    @section Scripts {
+        <partial name="_ValidationScriptsPartial" />
+    }
+
+
+    <!-- JAVASCRIPT FILES -->
+    <script src="~/front/js/jquery.min.js"></script>
+    <script src="~/front/js/bootstrap.bundle.min.js"></script>
+    <script src="~/front/js/Headroom.js"></script>
+    <script src="~/front/js/jQuery.headroom.js"></script>
+    <script src="~/front/js/slick.min.js"></script>
+    <script src="~/front/js/custom.js"></script>
+
+</body>
+
+</html>
